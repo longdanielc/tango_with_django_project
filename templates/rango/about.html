@@ -11,6 +11,14 @@
     <body>
         <h1>Rango says...</h1>
         about! <br />
+        {% if thumbnails %}
+            <img src="{{ thumbnails.url }}" /><br />
+            <strong>There is data present.</strong><br />
+            {{ thumbnails }}
+        {% else %}
+            <strong>There is no data present.</strong><br />
+        {% endif %}
+
         <a href="/rango/">Home</a><br />
         <img src="{% static "images/World.jpg" %}" alt="Picture of Earth" /> <!-- New line -->
     </body>

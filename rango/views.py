@@ -20,7 +20,14 @@ def index(request):
     return render(request, 'rango/index.html', context_dict)
 
 def about(request):
-    return render(request, 'rango/about.html')
+    import urllib2
+    import json
+    json_string = urllib2.urlopen('https://api.instagram.com/v1/users/self/feed?access_token=1817020071.b72e6c2.9bcd9fbfd21d46c389b0a716bb562d78&count=1').read()
+    data2 = json.loads(json_string)
+    data_dict = {}
+    data_dict['thumbnails'] = data2['data'][0]['images']['thumbnail']
+
+    return render(request, 'rango/about.html', data_dict)
 
 def category(request, category_name_slug):
 
